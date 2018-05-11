@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 import LetterInput from "./LetterInput";
 import MysteryLetter from "./MysteryLetter";
+import getMysteryWord from "./Dictionary";
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-const mysteryWord = ["T","E","S","T","","R","E","T"];
 
 class App extends Component {
+  
   constructor(props){
     super(props);
+    this.state = {
+      mysteryWord: getMysteryWord(),
+    }
+
   }
   render() {
+    const mysteryWord = this.state.mysteryWord;
     return (
       <div className="App">
         <header className="App-header">
