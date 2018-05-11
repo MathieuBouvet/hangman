@@ -1,7 +1,7 @@
 .drawing {
 	border: solid #222 5px;
 	position: absolute;
-	top: -300px;
+	top: 200px;
 
 }
 #bottom-id{
@@ -27,11 +27,92 @@
 	left: 670px;
 	transform: rotate(-45deg);
 }
-#support-id::after{
-	content: "";
-	border: solid #222 5px;
-	position: absolute;
+#rope-id {
 	height: 20px;
-	top: 300px;
-	left: 700px;
+	top: 260px;
+	left:822px;
+	border: solid #222 3px;
+}
+#head-id {
+	width:30px;
+	height: 30px;
+	border-radius: 15px;
+
+	top: 275px;
+	left: 810px;
+}
+#torso-id {
+	height: 55px;
+	border: solid #222 3px;
+	top: 305px;
+	left: 822px;
+}
+#left-arm-id {
+	width: 45px;
+	border: solid #222 3px;
+	top: 325px;
+	left: 790px;
+	transform: rotate(-60deg);
+}
+#right-arm-id {
+	width: 45px;
+	border: solid #222 3px;
+	top: 325px;
+	left: 815px;
+	transform: rotate(60deg);
+}
+#left-leg-id {
+	width: 65px;
+	border: solid #222 3px;
+	top: 385px;
+	left: 787px;
+	transform: rotate(-80deg);
+}
+#right-leg-id {
+	width: 65px;
+	border: solid #222 3px;
+	top: 385px;
+	left: 798px;
+	transform: rotate(80deg);
+}
+#left-eye-1-id {
+	border: initial;
+	border-top: solid #222 1px;
+	width: 7px;
+	top: 288px;
+	left: 817px;
+	transform: rotate(45deg);
+}
+#left-eye-2-id {
+	border: initial;
+	border-top: solid #222 1px;
+	width: 7px;
+	top: 288px;
+	left: 817px;
+	transform: rotate(-45deg);
+	
+}
+#right-eye-1-id {
+	border: initial;
+	border-top: solid #222 1px;
+	width: 7px;
+	top: 288px;
+	left: 826px;
+	transform: rotate(45deg);
+}
+#right-eye-2-id {
+	border: initial;
+	border-top: solid #222 1px;
+	width: 7px;
+	top: 288px;
+	left: 826px;
+	transform: rotate(-45deg);
+}
+#mouth-id {
+	border: initial;
+	border-top: solid #222 1px;
+	width: 14px;
+	top: 294px;
+	left: 818px;
+	
 }
