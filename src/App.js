@@ -13,11 +13,25 @@ class App extends Component {
     super(props);
     this.state = {
       mysteryWord: getMysteryWord(),
+      triedLettersCorrect: [],
+      triedLettersIncorrect: [],
     }
 
   }
+  /** EVENT HANDLERS */
+
+  // Arrow function to ensure proper this binding
+  handleInputLetterClick = (triedLetter) => {
+    const {mysteryWord, triedLettersCorrect, triedLettersIncorrect } = this.state;
+    if(mysteryWord.includes(triedLetter) && !triedLettersCorrect.includes(triedLetter)){
+      this.setState({ triedLettersCorrect: [...triedLettersCorrect, triedLetter] });
+    }
+    else if(!mysteryWord.includes(triedLetter) && !triedLettersIncorrect.includes(triedLetter)){
+      this.setState({ triedLettersIncorrect: [...triedLettersIncorrect, triedLetter] });
+    }
+  }
   render() {
-    const mysteryWord = this.state.mysteryWord;
+    const { mysteryWord, triedLettersIncorrect } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -33,9 +47,14 @@ class App extends Component {
                />
             ))}
           </div>
+          <div className="tried-letter-container">
+            {triedLettersIncorrect.map((incorrectLetter) => (
+              `${incorrectLetter} `
+            ))}
+          </div>
           <div className="letter-input-container">
             {letters.map((letter,index) => (
-              <LetterInput letter={letter} key={index} />
+              <LetterInput letter={letter} key={index} onClick={this.handleInputLetterClick}/>
             ))}
           </div>
         </div>
