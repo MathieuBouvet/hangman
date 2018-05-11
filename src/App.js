@@ -18,6 +18,7 @@ class App extends Component {
     }
 
   }
+
   /** EVENT HANDLERS */
 
   // Arrow function to ensure proper this binding
@@ -31,7 +32,7 @@ class App extends Component {
     }
   }
   render() {
-    const { mysteryWord, triedLettersIncorrect } = this.state;
+    const { mysteryWord, triedLettersIncorrect, triedLettersCorrect } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -43,7 +44,7 @@ class App extends Component {
               <MysteryLetter 
                 key={index}
                 letter={mysteryLetter}
-                show
+                show={triedLettersCorrect.includes(mysteryLetter)}
                />
             ))}
           </div>
