@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import LetterInput from "./LetterInput";
+import MysteryLetter from "./MysteryLetter";
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
+const mysteryWord = ["T","E","S","T","","R","E","T"];
+
 class App extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <div className="App">
@@ -12,8 +18,17 @@ class App extends Component {
           <h1 className="App-title">Hangman Game</h1>
         </header>
         <div className="hangman-body">
+          <div className="mystery-word">
+            {mysteryWord.map((mysteryLetter, index) => (
+              <MysteryLetter 
+                key={index}
+                letter={mysteryLetter}
+                show
+               />
+            ))}
+          </div>
           <div className="letter-input-container">
-            {letters.map( (letter,index) => (
+            {letters.map((letter,index) => (
               <LetterInput letter={letter} key={index} />
             ))}
           </div>
