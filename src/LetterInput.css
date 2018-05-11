@@ -1,0 +1,23 @@
+.letter-input {
+	height: 50px;
+	width: 50px;
+	border: solid #5D5D5D 1px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	color: #333333;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 15px; 
+
+	background-color: #f6f6f6;
+	cursor: pointer;
+	user-select: none;
+}
+.letter-input:hover{
+	background-color: #EAEAEA;
+}
+.letter-input:active{
+	/* border-color: #CECECE; */
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) inset;
+	padding-top: 16px;
+
+}
