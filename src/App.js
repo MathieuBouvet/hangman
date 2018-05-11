@@ -3,8 +3,10 @@ import './App.css';
 import LetterInput from "./LetterInput";
 import MysteryLetter from "./MysteryLetter";
 import getMysteryWord from "./Dictionary";
+import HangDrawing from "./HangDrawing"
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const hangingElements = ["bottom","pole","top","support","rope","head","torso","left-arm","right-arm","left-leg","right-leg","left-eye-1","left-eye-2","right-eye-1","right-eye-2","mouth"];
 
 
 class App extends Component {
@@ -46,6 +48,11 @@ class App extends Component {
                 letter={mysteryLetter}
                 show={triedLettersCorrect.includes(mysteryLetter)}
                />
+            ))}
+          </div>
+          <div className="hang-drawing">
+            {hangingElements.map((elementName,index) => (
+              <HangDrawing key={index} name={elementName} show />
             ))}
           </div>
           <div className="tried-letter-container">
