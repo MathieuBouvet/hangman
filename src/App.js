@@ -33,6 +33,24 @@ class App extends Component {
       this.setState({ triedLettersIncorrect: [...triedLettersIncorrect, triedLetter] });
     }
   }
+
+  /** LOGIC METHODS */
+  getDisplayDrawingFor(index){
+    const { triedLettersIncorrect } = this.state;
+    const nbIncorrect = triedLettersIncorrect.length;
+    if(nbIncorrect < 4){
+      return index < nbIncorrect;
+    }else if(nbIncorrect < 7){
+      return index < nbIncorrect+1;
+    }else if(nbIncorrect < 8){
+      return index < nbIncorrect+2;
+    }else if(nbIncorrect < 9){
+      return index < nbIncorrect+3;
+    }else{
+      return true;
+    }
+  }
+
   render() {
     const { mysteryWord, triedLettersIncorrect, triedLettersCorrect } = this.state;
     return (
@@ -52,7 +70,11 @@ class App extends Component {
           </div>
           <div className="hang-drawing">
             {hangingElements.map((elementName,index) => (
-              <HangDrawing key={index} name={elementName} show />
+              <HangDrawing 
+                key={index} 
+                name={elementName} 
+                show={this.getDisplayDrawingFor(index)}
+              />
             ))}
           </div>
           <div className="tried-letter-container">
