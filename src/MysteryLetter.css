@@ -1,0 +1,14 @@
+.mystery-letter {
+	width: 50px;
+	height: 65px;
+	border-bottom: 5px #222 solid;
+	color: #1B1B1B;
+	margin: 10px;
+	font-size: 30px;
+	padding-top:22px;
+	user-select: none;
+
+}
+.mystery-letter.space {
+	border: none;
+}
