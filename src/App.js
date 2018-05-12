@@ -47,7 +47,11 @@ class App extends Component {
   /** LOGIC METHODS */
   getDisplayDrawingFor(){
     const { triedLettersIncorrect } = this.state;
-    return hangmanDrawings[`hangman-${(triedLettersIncorrect.length)-1}.png`];
+    if(triedLettersIncorrect.length < 8){
+      return hangmanDrawings[`hangman-${(triedLettersIncorrect.length)-1}.png`];
+    }else{
+      return hangmanDrawings["hangman-8.png"];
+    }
   }
 
   render() {
