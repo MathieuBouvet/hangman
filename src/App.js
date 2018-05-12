@@ -6,6 +6,15 @@ import getMysteryWord from "./Dictionary";
 import HangDrawing from "./HangDrawing";
 import RemainingTries from "./RemainingTries";
 
+function importAll(r){
+  let images = {};
+  r.keys().forEach( function (item) {
+      images[item.replace('./','')] = r(item);
+  });
+  return images;
+}
+const hangmanDrawings = importAll(require.context('../img/HangmanDrawings',false));
+
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 const hangingElements = ["bottom","pole","top","support","rope","head","torso","left-arm","right-arm","left-leg","right-leg","left-eye-1","left-eye-2","right-eye-1","right-eye-2","mouth"];
 
@@ -36,20 +45,9 @@ class App extends Component {
   }
 
   /** LOGIC METHODS */
-  getDisplayDrawingFor(index){
+  getDisplayDrawingFor(){
     const { triedLettersIncorrect } = this.state;
-    const nbIncorrect = triedLettersIncorrect.length;
-    if(nbIncorrect < 4){
-      return index < nbIncorrect;
-    }else if(nbIncorrect < 7){
-      return index < nbIncorrect+1;
-    }else if(nbIncorrect < 8){
-      return index < nbIncorrect+2;
-    }else if(nbIncorrect < 9){
-      return index < nbIncorrect+3;
-    }else{
-      return true;
-    }
+    return hangmanDrawings[`hangman-${(triedLettersIncorrect.length)-1}.png`];
   }
 
   render() {
@@ -70,15 +68,11 @@ class App extends Component {
                />
             ))}
           </div>
-          <div className="hang-drawing">
-            {hangingElements.map((elementName,index) => (
-              <HangDrawing 
-                key={index} 
-                name={elementName} 
-                show={this.getDisplayDrawingFor(index)}
-              />
-            ))}
-          </div>
+          { triedLettersIncorrect.length > 0 && 
+            <div className="hang-drawing">
+              <HangDrawing name={this.getDisplayDrawingFor()} />
+            </div>
+          }
           <div className="tried-letter-container">
             {triedLettersIncorrect.map((incorrectLetter) => (
               `${incorrectLetter} `
