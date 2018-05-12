@@ -3,7 +3,7 @@ import "./HangDrawing.css";
 
 const HangDrawing = ({name}) => (
 	<div>
-		<img src={name} />
+		<img className="hangman-drawing" src={name} />
 	</div>
 )
 

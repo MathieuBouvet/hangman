@@ -119,3 +119,6 @@
 	left: 818px;
 	
 }
+img.hangman-drawing {
+	max-width: 100%;
+}
