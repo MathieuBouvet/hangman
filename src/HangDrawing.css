@@ -4,6 +4,9 @@
 	top: 200px;
 
 }
+.drawing.hidden {
+	display: none;
+}
 #bottom-id{
 	top: 450px;
 	left: 600px;
