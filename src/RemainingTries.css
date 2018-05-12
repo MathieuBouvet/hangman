@@ -1,0 +1,8 @@
+.remaining-tries-container {
+	width:75px;
+	height: 75px
+}
+.remaining-tries {
+	color: #222;
+	font-size: 35px;
+}

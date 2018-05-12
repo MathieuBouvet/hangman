@@ -3,7 +3,8 @@ import './App.css';
 import LetterInput from "./LetterInput";
 import MysteryLetter from "./MysteryLetter";
 import getMysteryWord from "./Dictionary";
-import HangDrawing from "./HangDrawing"
+import HangDrawing from "./HangDrawing";
+import RemainingTries from "./RemainingTries";
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 const hangingElements = ["bottom","pole","top","support","rope","head","torso","left-arm","right-arm","left-leg","right-leg","left-eye-1","left-eye-2","right-eye-1","right-eye-2","mouth"];
@@ -59,6 +60,7 @@ class App extends Component {
           <h1 className="App-title">Hangman Game</h1>
         </header>
         <div className="hangman-body">
+          <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
           <div className="mystery-word">
             {mysteryWord.map((mysteryLetter, index) => (
               <MysteryLetter 
