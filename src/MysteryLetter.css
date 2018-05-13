@@ -12,3 +12,12 @@
 .mystery-letter.space {
 	border: none;
 }
+@media only screen and (max-width: 600px){
+	.mystery-letter {
+		font-size: 20px;
+		height: 40px;
+		width: 40px;
+		padding-top: 7px;
+		margin: 7px;
+	}
+}

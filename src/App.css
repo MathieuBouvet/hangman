@@ -33,6 +33,7 @@
 }
 
 .mystery-word {
+  max-width: 100%;
   grid-column: 1 / 4;
   grid-row: 1;
   display: flex;
@@ -52,4 +53,15 @@
 .remaning-tries-container {
   grid-row: 2;
   grid-column: 3;
+}
+
+@media only screen and (max-width: 600px){
+  .App-title {
+    margin: 0;
+    font-size: 1em;
+    text-align: left;
+  }
+  .App-header {
+    padding: 10px;
+  }
 }
