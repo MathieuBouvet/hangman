@@ -9,6 +9,12 @@
 	user-select: none;
 
 }
+.mystery-letter.success {
+	color: #558b2f;
+}
+.mystery-letter.missed {
+	color: #bf360c;
+}
 .mystery-letter.space {
 	border: none;
 }

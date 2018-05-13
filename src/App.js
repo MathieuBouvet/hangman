@@ -34,12 +34,24 @@ class App extends Component {
   // Arrow function to ensure proper this binding
   handleInputLetterClick = (triedLetter) => {
     const {mysteryWord, triedLettersCorrect, triedLettersIncorrect } = this.state;
+    const [isGameOver] = this.isGameOverAndHow();
+    if(isGameOver){
+      return;
+    }
     if(mysteryWord.includes(triedLetter) && !triedLettersCorrect.includes(triedLetter)){
       this.setState({ triedLettersCorrect: [...triedLettersCorrect, triedLetter] });
     }
     else if(!mysteryWord.includes(triedLetter) && !triedLettersIncorrect.includes(triedLetter)){
       this.setState({ triedLettersIncorrect: [...triedLettersIncorrect, triedLetter] });
     }
+  }
+
+  handleReplayButtonClick = () => {
+    this.setState({
+      mysteryWord: getMysteryWord(),
+      triedLettersCorrect: [],
+      triedLettersIncorrect: [],
+    });
   }
 
   /** LOGIC METHODS */
@@ -55,22 +67,63 @@ class App extends Component {
     }
   }
 
+  getDisplayMysteryLetter(letter){
+    const { triedLettersCorrect } = this.state;
+    const [isGameOver, overHow] = this.isGameOverAndHow();
+    if(!isGameOver){
+      return triedLettersCorrect.includes(letter) ? "normal" : "hidden";
+    }else{
+      if(overHow === "won"){
+        return "success";
+      }else{
+        return triedLettersCorrect.includes(letter) ? "normal" : "missed";
+      }
+    }
+  }
+
+  getNbLetterInMysteryWord(){
+    const { mysteryWord } = this.state;
+    const mysteryWordLetters = [];
+    mysteryWord.forEach( (letter) => {
+      if(!mysteryWordLetters.includes(letter)){
+        mysteryWordLetters.push(letter);
+      }
+    });
+    return mysteryWordLetters.length;
+  }
+
+  isGameOverAndHow(){
+    const { triedLettersIncorrect, triedLettersCorrect } = this.state;
+    if(triedLettersIncorrect.length > 8){
+      return [true, "lost"];
+    }
+    if(this.getNbLetterInMysteryWord() === triedLettersCorrect.length){
+      return [true, "won"];
+    }
+    return [false, ""];
+  }
+
   render() {
     const { mysteryWord, triedLettersIncorrect, triedLettersCorrect } = this.state;
+    const [isGameOver] = this.isGameOverAndHow();
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Hangman Game</h1>
         </header>
-        {triedLettersIncorrect.length < 9 && 
+        {!isGameOver ? 
           <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
+          :
+          <div className="replay-button" onClick={this.handleReplayButtonClick}>
+            Rejouer
+          </div>
         }
         <div className="mystery-word">
           {mysteryWord.map((mysteryLetter, index) => (
             <MysteryLetter 
               key={index}
               letter={mysteryLetter}
-              show={triedLettersCorrect.includes(mysteryLetter)}
+              show={this.getDisplayMysteryLetter(mysteryLetter)}
              />
           ))}
         </div>
