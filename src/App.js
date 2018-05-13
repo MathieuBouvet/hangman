@@ -45,6 +45,9 @@ class App extends Component {
   /** LOGIC METHODS */
   getDisplayDrawingFor(){
     const { triedLettersIncorrect } = this.state;
+    if(triedLettersIncorrect.length === 0){
+      return hangmanDrawings['hangman-start.png'];
+    }
     if(triedLettersIncorrect.length < 8){
       return hangmanDrawings[`hangman-${(triedLettersIncorrect.length)-1}.png`];
     }else{
@@ -70,11 +73,9 @@ class App extends Component {
                />
             ))}
           </div>
-          { triedLettersIncorrect.length > 0 && 
-            <div className="hang-drawing">
-              <HangDrawing name={this.getDisplayDrawingFor()} />
-            </div>
-          }
+          <div className="hang-drawing">
+            <HangDrawing name={this.getDisplayDrawingFor()} />
+          </div>
           <div className="tried-letter-container">
             {triedLettersIncorrect.map((incorrectLetter) => (
               `${incorrectLetter} `
