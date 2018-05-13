@@ -48,7 +48,7 @@ class App extends Component {
     if(triedLettersIncorrect.length === 0){
       return hangmanDrawings['hangman-start.png'];
     }
-    if(triedLettersIncorrect.length < 8){
+    if(triedLettersIncorrect.length <= 8){
       return hangmanDrawings[`hangman-${(triedLettersIncorrect.length)-1}.png`];
     }else{
       return hangmanDrawings["hangman-8.png"];
@@ -63,7 +63,9 @@ class App extends Component {
           <h1 className="App-title">Hangman Game</h1>
         </header>
         <div className="hangman-body">
-          <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
+          {triedLettersIncorrect.length < 9 && 
+            <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
+          }
           <div className="mystery-word">
             {mysteryWord.map((mysteryLetter, index) => (
               <MysteryLetter 
