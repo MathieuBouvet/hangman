@@ -62,32 +62,30 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Hangman Game</h1>
         </header>
-        <div className="hangman-body">
-          {triedLettersIncorrect.length < 9 && 
-            <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
-          }
-          <div className="mystery-word">
-            {mysteryWord.map((mysteryLetter, index) => (
-              <MysteryLetter 
-                key={index}
-                letter={mysteryLetter}
-                show={triedLettersCorrect.includes(mysteryLetter)}
-               />
-            ))}
-          </div>
-          <div className="hang-drawing">
-            <HangDrawing name={this.getDisplayDrawingFor()} />
-          </div>
-          <div className="tried-letter-container">
-            {triedLettersIncorrect.map((incorrectLetter) => (
-              `${incorrectLetter} `
-            ))}
-          </div>
-          <div className="letter-input-container">
-            {letters.map((letter,index) => (
-              <LetterInput letter={letter} key={index} onClick={this.handleInputLetterClick}/>
-            ))}
-          </div>
+        {triedLettersIncorrect.length < 9 && 
+          <RemainingTries remainingTries={8 - triedLettersIncorrect.length} />
+        }
+        <div className="mystery-word">
+          {mysteryWord.map((mysteryLetter, index) => (
+            <MysteryLetter 
+              key={index}
+              letter={mysteryLetter}
+              show={triedLettersCorrect.includes(mysteryLetter)}
+             />
+          ))}
+        </div>
+        <div className="hang-drawing">
+          <HangDrawing name={this.getDisplayDrawingFor()} />
+        </div>
+        <div className="tried-letter-container">
+          {triedLettersIncorrect.map((incorrectLetter) => (
+            `${incorrectLetter} `
+          ))}
+        </div>
+        <div className="letter-input-container">
+          {letters.map((letter,index) => (
+            <LetterInput letter={letter} key={index} onClick={this.handleInputLetterClick}/>
+          ))}
         </div>
       </div>
     );
