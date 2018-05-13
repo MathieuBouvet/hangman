@@ -104,7 +104,7 @@ class App extends Component {
   }
 
   render() {
-    const { mysteryWord, triedLettersIncorrect, triedLettersCorrect } = this.state;
+    const { mysteryWord, triedLettersIncorrect } = this.state;
     const [isGameOver] = this.isGameOverAndHow();
     return (
       <div className="App">
