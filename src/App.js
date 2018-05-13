@@ -16,8 +16,6 @@ function importAll(r){
 const hangmanDrawings = importAll(require.context('../img/HangmanDrawings',false));
 
 const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-const hangingElements = ["bottom","pole","top","support","rope","head","torso","left-arm","right-arm","left-leg","right-leg","left-eye-1","left-eye-2","right-eye-1","right-eye-2","mouth"];
-
 
 class App extends Component {
   
